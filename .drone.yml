@@ -1,3 +1,4 @@
+---
 kind: pipeline
 type: docker
 name: Testing Python CI/CD
@@ -6,7 +7,6 @@ name: Testing Python CI/CD
 steps:
 - name: Install and deploy
   image: python
-
   commands:
   - pip3 install -r requirements.txt
 
