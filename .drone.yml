@@ -1,17 +1,15 @@
----
 kind: pipeline
 type: docker
 name: Testing Python CI/CD
 
 
 steps:
-- name: Install and deploy
-  image: python
+- name: Black Code Format Check
+  image: netw0rkaut0mati0n/netauto
   commands:
-  - pip3 install -r requirements.txt
+  - black . --check
 
 trigger:
-  branch:
+  event:
     exclude:
-    - main
-    - master
+    - pull_request
