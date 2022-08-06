@@ -1,5 +1,15 @@
-FROM python:3.9.7-slim
+kind: pipeline
+type: docker
+name: Testing Python CI/CD
 
-# Install dependencies:
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+
+steps:
+- name: Black Code Format Check
+  image: netw0rkaut0mati0n/netauto
+  commands:
+  - black . --check
+
+trigger:
+  event:
+    exclude:
+    - pull_request
