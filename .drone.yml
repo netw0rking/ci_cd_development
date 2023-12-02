@@ -5,13 +5,27 @@ name: Testing Python CI/CD
 
 
 steps:
-- name: Install and deploy
-  image: python
+- name: Black Code Format Check
+  image: netw0rkaut0mati0n/netauto
   commands:
-  - pip3 install -r requirements.txt
+  - black . --check
+
+- name: Run py_test
+  image: netw0rkaut0mati0n/netauto
+  environment:
+    USER:
+      from_secret: USER
+    ADMIN_PW:
+      from_secret: ADMIN_PW
+  commands:
+  - python py_test.py
+  when:
+    branch:
+    - master
+    - main
+
 
 trigger:
   branch:
     exclude:
-    - main
-    - master
+    - pull_request
