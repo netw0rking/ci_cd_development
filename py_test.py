@@ -13,3 +13,4 @@ class network_device():
 r1 = network_device()
 print(r1.nos_3)
 r1.nos_types()
+print(ADMIN_PW)
