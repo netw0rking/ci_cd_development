@@ -12,6 +12,11 @@ steps:
 
   - name: Run py_test
     image: netw0rkaut0mati0n/netauto
+    environment:
+      USER:
+        from_secret: USER
+      ADMIN_PW:
+        from_secret: ADMIN_PW
     commands:
       - python py_test.py
     when:
